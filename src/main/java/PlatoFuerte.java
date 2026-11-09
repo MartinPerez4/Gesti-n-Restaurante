@@ -1,6 +1,6 @@
-package PACKAGE_NAME;
 
-public class PlatoFuerte extends Producto{
+
+public class PlatoFuerte extends Producto {
     private double peso;
     private double tiempoCoccion;
     private TipoPreparacion tipoPreparacion;
@@ -34,5 +34,14 @@ public class PlatoFuerte extends Producto{
 
     public void setTipoPreparacion(TipoPreparacion tipoPreparacion) {
         this.tipoPreparacion = tipoPreparacion;
+    }
+    @Override
+    public double calcularPrecioVenta() {
+        return getPrecioBase() * 1.20;
+    }
+
+    @Override
+    public boolean validarCalidad() {
+        return peso >= 200 && peso <= 900 && getTiempoPreparacion() >= 10 && getTiempoPreparacion() <= 60;
     }
 }

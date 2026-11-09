@@ -1,14 +1,14 @@
-package PACKAGE_NAME;
 
-public class Postre extends Producto{
+
+public class Postre extends Producto {
     private double peso;
-    private double temperaturaAlmacenamaiento;
+    private double temperaturaAlmacenamiento;
     private boolean requiereRefrigeracion;
 
     public Postre(String codigo, String nombre, String descripcion, double precioBase, int tiempoPreparacion, double peso, double temperaturaAlmacenamaiento, boolean requiereRefrigeracion) {
         super(codigo, nombre, descripcion, precioBase, tiempoPreparacion);
         this.peso = peso;
-        this.temperaturaAlmacenamaiento = temperaturaAlmacenamaiento;
+        this.temperaturaAlmacenamiento = temperaturaAlmacenamaiento;
         this.requiereRefrigeracion = requiereRefrigeracion;
     }
 
@@ -20,12 +20,12 @@ public class Postre extends Producto{
         this.peso = peso;
     }
 
-    public double getTemperaturaAlmacenamaiento() {
-        return temperaturaAlmacenamaiento;
+    public double getTemperaturaAlmacenamiento() {
+        return temperaturaAlmacenamiento;
     }
 
-    public void setTemperaturaAlmacenamaiento(double temperaturaAlmacenamaiento) {
-        this.temperaturaAlmacenamaiento = temperaturaAlmacenamaiento;
+    public void setTemperaturaAlmacenamiento(double temperaturaAlmacenamiento) {
+        this.temperaturaAlmacenamiento = temperaturaAlmacenamiento;
     }
 
     public boolean getRequiereRefrigeracion() {
@@ -34,5 +34,25 @@ public class Postre extends Producto{
 
     public void setRequiereRefrigeracion(boolean requiereRefrigeracion) {
         this.requiereRefrigeracion = requiereRefrigeracion;
+    }
+
+    @Override
+    public double calcularPrecioVenta() {
+        double precio = getPrecioBase() * 1.15;
+        if (requiereRefrigeracion) {
+            precio += getPrecioBase() * 0.05;
+        }
+        return precio;
+    }
+
+    @Override
+    public boolean validarCalidad() {
+        if (peso < 80 || peso > 500) {
+            return false;
+        }
+        if (requiereRefrigeracion) {
+            return temperaturaAlmacenamiento >= 0 && temperaturaAlmacenamiento <= 6;
+        }
+        return temperaturaAlmacenamiento >= 15 && temperaturaAlmacenamiento <= 30;
     }
 }

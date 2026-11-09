@@ -1,4 +1,3 @@
-package PACKAGE_NAME;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,16 +9,17 @@ public class Pedido {
     private double costoDomicilio;
     private EstadoPedido estadoPedido;
     private EmpresaEntrega empresaEntrega;
-
+    ModalidadEntrega ModalidadEntrega;
     private List<DetallePedido> listaDetallePedido;
 
-    public Pedido(String codigo, LocalDate fecha, double distancia, double costoDomicilio, EstadoPedido estadoPedido, EmpresaEntrega empresaEntrega, List<DetallePedido> listaDetallePedido) {
+    public Pedido(String codigo, LocalDate fecha, double distancia, double costoDomicilio, EstadoPedido estadoPedido, EmpresaEntrega empresaEntrega, ModalidadEntrega modalidadEntrega, List<DetallePedido> listaDetallePedido) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.distancia = distancia;
         this.costoDomicilio = costoDomicilio;
         this.estadoPedido = estadoPedido;
         this.empresaEntrega = empresaEntrega;
+        ModalidadEntrega = modalidadEntrega;
         this.listaDetallePedido = listaDetallePedido;
     }
 

@@ -1,10 +1,11 @@
-package PACKAGE_NAME;
+
+
 
 public class Bebida extends Producto {
     private double volumen;
     private double temperaturaServicio;
     private TipoBebida tipoBebida;
-
+    private boolean preparacionEspecial;
     public Bebida(String codigo, String nombre, String descripcion, double precioBase, int tiempoPreparacion, double volumen, double temperaturaServicio, TipoBebida tipoBebida) {
         super(codigo, nombre, descripcion, precioBase, tiempoPreparacion);
         this.volumen = volumen;
@@ -34,5 +35,25 @@ public class Bebida extends Producto {
 
     public void setTipoBebida(TipoBebida tipoBebida) {
         this.tipoBebida = tipoBebida;
+    }
+
+    @Override
+    public double calcularPrecioVenta() {
+        double precio = getPrecioBase() * 1.10;
+        if (preparacionEspecial) {
+            precio += 3000;
+        }
+        return precio;
+    }
+
+    @Override
+    public boolean validarCalidad() {
+        if (volumen < 150 || volumen > 1500) {
+            return false;
+        }
+        if (tipoBebida == TipoBebida.FRIA) {
+            return temperaturaServicio >= 0 && temperaturaServicio <= 10;
+        }
+        return temperaturaServicio >= 55 && temperaturaServicio <= 85;
     }
 }

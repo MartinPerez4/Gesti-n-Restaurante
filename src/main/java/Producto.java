@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+
 
 public abstract class Producto {
     private String codigo;
@@ -54,4 +54,8 @@ public abstract class Producto {
     public void setTiempoPreparacion(int tiempoPreparacion) {
         this.tiempoPreparacion = tiempoPreparacion;
     }
+
+    public abstract double calcularPrecioVenta();
+
+    public abstract boolean validarCalidad();
 }
