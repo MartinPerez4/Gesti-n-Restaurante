@@ -1,4 +1,8 @@
 package PACKAGE_NAME;
 
-public class EstadoPedido {
+public enum EstadoPedido {
+    PENDIENTE,
+    CONFIRMADO,
+    ENTREGADO,
+    CANCELADO
 }
