@@ -1,9 +1,9 @@
 package PACKAGE_NAME;
 
-public class EmpresaEntrega {
-    private double tarifaBase;
-    private double costoKilometro;
-    private double recorridoMaximo;
+public abstract class EmpresaEntrega {
+    protected double tarifaBase;
+    protected double costoKilometro;
+    protected double recorridoMaximo;
 
     public EmpresaEntrega(double tarifaBase, double costoKilometro, double recorridoMaximo) {
         this.tarifaBase = tarifaBase;

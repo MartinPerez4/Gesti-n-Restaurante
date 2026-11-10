@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Pedido {
-    private String codigo;
-    private LocalDate fecha;
-    private double distancia;
-    private double costoDomicilio;
-    private EstadoPedido estadoPedido;
-    private EmpresaEntrega empresaEntrega;
+    protected String codigo;
+    protected LocalDate fecha;
+    protected double distancia;
+    protected double costoDomicilio;
+    protected EstadoPedido estadoPedido;
+    protected EmpresaEntrega empresaEntrega;
     ModalidadEntrega ModalidadEntrega;
-    private List<DetallePedido> listaDetallePedido;
+    protected List<DetallePedido> listaDetallePedido;
 
     public Pedido(String codigo, LocalDate fecha, double distancia, double costoDomicilio, EstadoPedido estadoPedido, EmpresaEntrega empresaEntrega, ModalidadEntrega modalidadEntrega, List<DetallePedido> listaDetallePedido) {
         this.codigo = codigo;
@@ -70,6 +70,14 @@ public class Pedido {
 
     public void setEmpresaEntrega(EmpresaEntrega empresaEntrega) {
         this.empresaEntrega = empresaEntrega;
+    }
+
+    public ModalidadEntrega getModalidadEntrega() {
+        return ModalidadEntrega;
+    }
+
+    public void setModalidadEntrega(ModalidadEntrega modalidadEntrega) {
+        ModalidadEntrega = modalidadEntrega;
     }
 
     public List<DetallePedido> getListaDetallePedido() {
