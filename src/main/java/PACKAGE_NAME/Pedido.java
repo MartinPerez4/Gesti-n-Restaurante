@@ -1,6 +1,7 @@
 package PACKAGE_NAME;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
@@ -9,19 +10,16 @@ public class Pedido {
     protected double distancia;
     protected double costoDomicilio;
     protected EstadoPedido estadoPedido;
-    protected EmpresaEntrega empresaEntrega;
+    protected EmpresaDomicilio empresaDomicilio;
     ModalidadEntrega ModalidadEntrega;
     protected List<DetallePedido> listaDetallePedido;
 
-    public Pedido(String codigo, LocalDate fecha, double distancia, double costoDomicilio, EstadoPedido estadoPedido, EmpresaEntrega empresaEntrega, ModalidadEntrega modalidadEntrega, List<DetallePedido> listaDetallePedido) {
+    public Pedido(String codigo, LocalDate fecha, ModalidadEntrega modalidadEntrega) {
         this.codigo = codigo;
         this.fecha = fecha;
-        this.distancia = distancia;
-        this.costoDomicilio = costoDomicilio;
-        this.estadoPedido = estadoPedido;
-        this.empresaEntrega = empresaEntrega;
-        ModalidadEntrega = modalidadEntrega;
-        this.listaDetallePedido = listaDetallePedido;
+        this.ModalidadEntrega = modalidadEntrega;
+        this.estadoPedido = EstadoPedido.PENDIENTE;
+        this.listaDetallePedido = new ArrayList<>();
     }
 
     public String getCodigo() {
@@ -64,12 +62,12 @@ public class Pedido {
         this.estadoPedido = estadoPedido;
     }
 
-    public EmpresaEntrega getEmpresaEntrega() {
-        return empresaEntrega;
+    public EmpresaDomicilio getEmpresaDomicilio() {
+        return empresaDomicilio;
     }
 
-    public void setEmpresaEntrega(EmpresaEntrega empresaEntrega) {
-        this.empresaEntrega = empresaEntrega;
+    public void setEmpresaDomicilio(EmpresaDomicilio empresaDomicilio) {
+        this.empresaDomicilio = empresaDomicilio;
     }
 
     public ModalidadEntrega getModalidadEntrega() {
@@ -80,6 +78,7 @@ public class Pedido {
         ModalidadEntrega = modalidadEntrega;
     }
 
+
     public List<DetallePedido> getListaDetallePedido() {
         return listaDetallePedido;
     }
@@ -87,4 +86,38 @@ public class Pedido {
     public void setListaDetallePedido(List<DetallePedido> listaDetallePedido) {
         this.listaDetallePedido = listaDetallePedido;
     }
+    public void agregarProducto(Producto producto, int cantidad) {
+        listaDetallePedido.add(new DetallePedido(producto, cantidad, producto.calcularPrecioVenta()));
+    }
+    public void agregarDetalle(DetallePedido detalle) {
+        listaDetallePedido.add(detalle);
+    }
+
+    public double calcularSubtotal() {
+        double subtotal = 0;
+        for (DetallePedido d : listaDetallePedido) {
+            subtotal += d.calcularSubtotal();
+        }
+        return subtotal;
+    }
+
+    public double calcularTotal() {
+        return calcularSubtotal() + costoDomicilio;
+    }
+
+
+    public void confirmar() {
+        estadoPedido = EstadoPedido.CONFIRMADO;
+    }
+
+    public void marcarEntregado() {
+        estadoPedido = EstadoPedido.ENTREGADO;
+    }
+
+    public void cancelar() {
+        estadoPedido = EstadoPedido.CANCELADO;
+    }
+
+
+
 }

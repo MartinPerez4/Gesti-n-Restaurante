@@ -1,10 +1,12 @@
 package PACKAGE_NAME;
 
 public class DetallePedido {
+    private Producto Producto;
     private int cantidad;
     private double precioUnitario;
 
-    public DetallePedido(int cantidad, double precioUnitario) {
+    public DetallePedido(Producto producto, int cantidad, double precioUnitario) {
+        Producto = producto;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
     }
@@ -24,4 +26,18 @@ public class DetallePedido {
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
+
+    public Producto getProducto() {
+        return Producto;
+    }
+
+    public void setProducto(Producto producto) {
+        Producto = producto;
+    }
+
+    public double calcularSubtotal() {
+        return cantidad * precioUnitario;
+    }
+
+
 }

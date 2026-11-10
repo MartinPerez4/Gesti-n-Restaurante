@@ -2,13 +2,13 @@ package PACKAGE_NAME;
 
 public class PlatoFuerte extends Producto {
     private double peso;
-    private double tiempoCoccion;
+
+    private boolean cocionaprobada;
     private TipoPreparacion tipoPreparacion;
 
     public PlatoFuerte(String codigo, String nombre, String descripcion, double precioBase, int tiempoPreparacion, double peso, double tiempoCoccion, TipoPreparacion tipoPreparacion) {
         super(codigo, nombre, descripcion, precioBase, tiempoPreparacion);
         this.peso = peso;
-        this.tiempoCoccion = tiempoCoccion;
         this.tipoPreparacion = tipoPreparacion;
     }
 
@@ -20,12 +20,12 @@ public class PlatoFuerte extends Producto {
         this.peso = peso;
     }
 
-    public double getTiempoCoccion() {
-        return tiempoCoccion;
+    public boolean isCocionaprobada() {
+        return cocionaprobada;
     }
 
-    public void setTiempoCoccion(double tiempoCoccion) {
-        this.tiempoCoccion = tiempoCoccion;
+    public void setCocionaprobada(boolean cocionaprobada) {
+        this.cocionaprobada = cocionaprobada;
     }
 
     public TipoPreparacion getTipoPreparacion() {

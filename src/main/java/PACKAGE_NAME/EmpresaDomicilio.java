@@ -1,14 +1,14 @@
 package PACKAGE_NAME;
 
-public abstract class EmpresaEntrega {
+public abstract class EmpresaDomicilio {
     protected double tarifaBase;
     protected double costoKilometro;
-    protected double recorridoMaximo;
+    protected double distanciaMaxima;
 
-    public EmpresaEntrega(double tarifaBase, double costoKilometro, double recorridoMaximo) {
+    public EmpresaDomicilio(double tarifaBase, double costoKilometro, double recorridoMaximo) {
         this.tarifaBase = tarifaBase;
         this.costoKilometro = costoKilometro;
-        this.recorridoMaximo = recorridoMaximo;
+        this.distanciaMaxima = recorridoMaximo;
     }
 
     public double getTarifaBase() {
@@ -27,11 +27,15 @@ public abstract class EmpresaEntrega {
         this.costoKilometro = costoKilometro;
     }
 
-    public double getRecorridoMaximo() {
-        return recorridoMaximo;
+    public double getDistanciaMaxima() {
+        return distanciaMaxima;
     }
 
-    public void setRecorridoMaximo(double recorridoMaximo) {
-        this.recorridoMaximo = recorridoMaximo;
+    public void setDistanciaMaxima(double distanciaMaxima) {
+        this.distanciaMaxima = distanciaMaxima;
     }
+
+    public abstract double calcularCosto(double distancia);
+
+    public abstract boolean aceptarServicio(double distancia);
 }

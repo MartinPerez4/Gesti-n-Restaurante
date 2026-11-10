@@ -1,14 +1,13 @@
 package PACKAGE_NAME;
 
 import java.util.List;
-
+import java.util.ArrayList;
 public class Cliente {
     private String documentoIdentidad;
     private String nombreCompleto;
     private String telefono;
     private String correo;
     private String direccion;
-
     private List<Pedido> listaHistorialPedido;
 
     public Cliente(String documentoIdentidad, List<Pedido> listaHistorialPedido, String direccion, String correo, String telefono, String nombreCompleto) {
@@ -66,5 +65,14 @@ public class Cliente {
 
     public void setListaHistorialPedido(List<Pedido> listaHistorialPedido) {
         this.listaHistorialPedido = listaHistorialPedido;
+    }
+    public List<Pedido> consultarHistorial() {
+        return new ArrayList<>(listaHistorialPedido);
+    }
+
+    public void agregarPedido(Pedido pedido) {
+        if (pedido != null && !listaHistorialPedido.contains(pedido)) {
+            listaHistorialPedido.add(pedido);
+        }
     }
 }
