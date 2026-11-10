@@ -1,4 +1,4 @@
-
+package PACKAGE_NAME;
 
 public class Postre extends Producto {
     private double peso;

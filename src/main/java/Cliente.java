@@ -1,3 +1,5 @@
+package PACKAGE_NAME;
+
 import java.util.List;
 
 public class Cliente {

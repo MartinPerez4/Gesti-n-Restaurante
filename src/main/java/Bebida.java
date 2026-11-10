@@ -1,16 +1,17 @@
-
-
+package PACKAGE_NAME;
 
 public class Bebida extends Producto {
     private double volumen;
     private double temperaturaServicio;
     private TipoBebida tipoBebida;
     private boolean preparacionEspecial;
-    public Bebida(String codigo, String nombre, String descripcion, double precioBase, int tiempoPreparacion, double volumen, double temperaturaServicio, TipoBebida tipoBebida) {
+
+    public Bebida(String codigo, String nombre, String descripcion, double precioBase, int tiempoPreparacion, double volumen, double temperaturaServicio, TipoBebida tipoBebida, boolean preparacionEspecial) {
         super(codigo, nombre, descripcion, precioBase, tiempoPreparacion);
         this.volumen = volumen;
         this.temperaturaServicio = temperaturaServicio;
         this.tipoBebida = tipoBebida;
+        this.preparacionEspecial=preparacionEspecial;
     }
 
     public double getVolumen() {
@@ -35,6 +36,14 @@ public class Bebida extends Producto {
 
     public void setTipoBebida(TipoBebida tipoBebida) {
         this.tipoBebida = tipoBebida;
+    }
+
+    public boolean isPreparacionEspecial() {
+        return preparacionEspecial;
+    }
+
+    public void setPreparacionEspecial(boolean preparacionEspecial) {
+        this.preparacionEspecial = preparacionEspecial;
     }
 
     @Override

@@ -1,4 +1,4 @@
-
+package PACKAGE_NAME;
 
 public class PlatoFuerte extends Producto {
     private double peso;

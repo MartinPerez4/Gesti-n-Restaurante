@@ -1,4 +1,4 @@
-
+package PACKAGE_NAME;
 
 public class DetallePedido {
     private int cantidad;
